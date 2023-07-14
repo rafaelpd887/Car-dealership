@@ -19,11 +19,19 @@ A maioria das variáveis foram utilizadas no modelo final. Porém, algumas das v
 
 Os datasets diponibilizados possuiam muitos outros valores NA em outras variáveis, mas diferente de "veiculo_alienado" e "elegivel_revisao", essas outras variáveis possuíam categorias/níveis alternativos aos NAs. Elas foram mantidas nos dados e tiveram seus NAs substituídos pela palavra "nao", pois os NAs estavam representando as categorias "negativas" das variáveis qualitativas binárias.
 
-Por fim, as variáveis qualitativas foram todas "dummizadas" afim de permitir um melhor desempenho do modelo a ser criado.
+Por fim, as variáveis qualitativas foram todas "dummizadas" afim de permitir um melhor desempenho em certos modelos.
 
 # Qual o tipo de problema estamos resolvendo (regressão, classificação)?
-Estamos resolvendo um problema de regressão. Classificações são indicadas quando a variável de saída é qualitativa.
+Estamos resolvendo um problema de regressão. Classificações são indicadas quando a variável dependente é qualitativa.
 
 # Qual modelo melhor se aproxima dos dados e quais seus prós e contras?
 Acredito que os modelos mais indicados seriam a regressão linear e a árvore de decisão. Testei abordagens diferentes para ambos os tipos de modelo e decidi focar apenas nas árvores de decisão devido aos melhores resultados de R².
+A avaliação dos modelos foi feita a partir da divisão do "cars_train" em dois datasets na proporção 80/20. O primeiro dataset foi chamado "treino" e o segundo "teste". Essa medida foi necessária pois o "cars_test" não possuia a variável "preco".
+Todos os modelos cogitados foram incialmente, treinados com os dados do "treino" e avaliados com o "teste". Os modelos cogitados foram regressão linear OLS, floresta aleatória, árvore, e xgboost utilizando árvore como modelo base (xgboost tree).
+Dentre esses, o modelo que obteve melhor desempenho na previsão dos preços para o dataset "teste" foi a árvore com xgboost. 
+O XGBoost é um modelo de boosting que trabalha executando repetidamente um modelo base a fim de melhorá-lo com base nos seus resíduos. Ele é um algoritmo versátil e computacionalmente eficiente, sendo adequado para lidar com conjuntos de dados extensos devido à sua natureza iterativa, que permite capturar padrões nos dados que poderiam passar despercebidos em outros modelos. A principal desvantagem do XGBoost é a necessidade de ajustar seus parâmetros, o que pode tornar sua implementação complexa e menos prática em determinadas situações.
+
+# Qual medida de performance do modelo foi escolhida e por quê?
+A medida de desempenho principal escolhida foi o coeficiente de determinação (R²). O R² é uma métrica amplamente utilizada para a avaliação de modelos de regressão. Ele mede o quão bem um modelo se ajusta aos dados e o quão bem ele captura a variação total explicada pelas variáveis independentes.
+De maneira secundaria, os modelos também foram avaliados a partir do MSE e MAE, pois eles fornecem informações sobre o tamanho dos erros entre as previsões e os valores reais.
 
