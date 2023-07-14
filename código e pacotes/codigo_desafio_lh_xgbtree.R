@@ -71,13 +71,13 @@ cars_train <- rename(cars_train, ano_modelo = dummy_ano_modelo)
 cars_test <- rename(cars_test, ano_modelo = dummy_ano_modelo)
 
 # Dividino "cars_train" em "treino" e "teste"
-n <- sample(1:2,
-            size = nrow(cars_train),
-            replace = TRUE,
-            prob=c(0.8, 0.2))
-
-treino <- cars_train[n==1,]
-teste <- cars_train[n==2,]
+n <- sample(1:2,                                
+            size = nrow(cars_train),            # "treino" e "teste" foram
+            replace = TRUE,                     # usados para testar diferentes tipos de modelos
+            prob=c(0.8, 0.2))                   # e escolher um "modelo definitivo" para ser 
+                                                # treinado com os dados do "cars_train". O "modelo
+treino <- cars_train[n==1,]                     # definitivo" pôde então ser usado para prever os
+teste <- cars_train[n==2,]                      # preços das observações do "cars_test"
 
 
 ###############################################################################
@@ -128,9 +128,9 @@ avalia <- function(previsto, observado) {
   cat("R-squared:", r_squared, "\n")}
 
 # Usando a função de avaliação
-p_treino <- predict(xgbtree_final, cars_train) 
-p_teste <- predict(xgbtree, teste) 
-avalia(p_treino, cars_train$preco) 
+p_treino <- predict(xgbtree_final, cars_train)    
+p_teste <- predict(xgbtree, teste)                
+avalia(p_treino, cars_train$preco)                
 
 
 ###############################################################################
