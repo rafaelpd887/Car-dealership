@@ -1,7 +1,3 @@
-pacotes <- c("readxl", "kableExtra", "utils", "plotly", "dplyr", "rstatix", "jtools", "equatiomatic", 
-             "cowplot", "olsrr", "nortest", "car", "PerformanceAnalytics", "fastDummies", "ggplot2")
-lapply(pacotes, library, character.only = TRUE)
-
 pacotes <- c("readxl", # permite "ler" arquivos "xlsx"
              "dplyr", # funções para análise estatística 
              "PerformanceAnalytics", # adiciona outras funções para análise, 
@@ -26,29 +22,3 @@ if(sum(as.numeric(!pacotes %in% installed.packages())) != 0){
 
 
 
-lapply(pacotes, library, character.only = TRUE)
-
-
-saveRDS(modelo_cars2, "modelo_cars.rds")
-saveRDS(bc_modelo_cars, "bc_modelo_cars.rds")
-modelo_cars <- readRDS("modelo_cars.rds")
-
-
-
-
-
-
-# Avaliando o modelo1 (usando modelo e versao e cidade)
-
-summary(modelo_cars) ## R² = 0.7821
-## através do summary do modelo, podemos ver que muitas das variáveis não 
-## possuem significância estatistica se considerarmos um nível de confiança de 95%.
-
-vif(modelo_cars)
-## ao executarmos a função `vif`, retornamos um erro relacionado a alta correlação entre algumas
-## variáveis.
-
-##modelo2 (- modelo,-versao, -cidade) R² = 0.55 (R² stepwise tbm = 0.55)
-##modelo3 (- versao, -cidade) R2 = 0.68
-##MODELO4 (-VERSAO) R2 = 0.70
-##MODELO5 (-NUM_PORTAS) R² = 0.7809
