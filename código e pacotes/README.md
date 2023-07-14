@@ -25,5 +25,5 @@ Por fim, as variáveis qualitativas foram todas "dummizadas" afim de permitir um
 Estamos resolvendo um problema de regressão. Classificações são indicadas quando a variável de saída é qualitativa.
 
 # Qual modelo melhor se aproxima dos dados e quais seus prós e contras?
-Acredito que os modelos mais indicados seriam a regressão linear e a árvore de decisão. Testei ambordagems diferentes de ambos os tipos de modelo e resolvi focar somente nas árvore devido a melhores resultados de R².
+Acredito que os modelos mais indicados seriam a regressão linear e a árvore de decisão. Testei abordagens diferentes para ambos os tipos de modelo e decidi focar apenas nas árvores de decisão devido aos melhores resultados de R².
 
