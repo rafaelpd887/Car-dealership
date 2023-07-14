@@ -101,6 +101,7 @@ search_grid <- expand.grid(
   min_child_weight = 1,              # peso mínimo dos nós 
   subsample = .7                     # fração de obs. a serem usadas em cada árvore
 )
+
 # Criando o modelo ("XGBoost Tree")
 xgbtree_final <- caret::train(
   preco ~ .,                         # preço em função de "tudo"
