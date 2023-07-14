@@ -1,5 +1,5 @@
 # Desafio_Lighthouse
-arquivos do desafio lighthouse da Indicium
+esse diretório contém arquivos relacionados ao desafio Lighthouse da Indicium.
 
 # Como instalar e executar o projeto?
 Meu projeto foi feito usando a linguagem R através do IDE "RStudio". Assim, para executar os códigos disponibilizados nesse repositório, recomendo que o faça em um computador com o R e o RStudio instalados. Ambos estão disponíveis nesse [link](https://posit.co/download/rstudio-desktop/).
