@@ -15,6 +15,8 @@ A maioria das variáveis foram utilizadas no modelo final. Porém, algumas das v
 
 "num_fotos" foi removida porque mostrou possuir uma correlação irrelevante com a variável de saída, porque o meu conhecimento do domínio me permite saber que o "número de fotos" de um automóvel não é uma característica usada na sua precificação.
 
+Cogitei remover "num_portas", pois pensei que o número de portas não influenciava no valor de um carro. Curiosamente, essa variável mostrou ter uma correlação levemente negativa com o preço. Essa relação provavelmente ocorreu devido aos carros esportivos de luxo que apresentam um alto valor e possuem apenas duas portas. Resolvi manter "num_portas" para que o modelo pudesse capturar as relações estabelecidas pela variável. 
+
 "veiculo_alienado" e "elegivel_revisao" pareciam ser duas variáveis qualitativas supostamente binárias, porém todas as observações possuíam valores vazios (NA) em ambas. Logo, também foram excluídas dos dados.
 
 Os datasets diponibilizados possuiam muitos outros valores NA em outras variáveis, mas diferente de "veiculo_alienado" e "elegivel_revisao", essas outras variáveis possuíam categorias/níveis alternativos aos NAs. Elas foram mantidas nos dados e tiveram seus NAs substituídos pela palavra "nao", pois os NAs estavam representando as categorias "negativas" das variáveis qualitativas binárias.
