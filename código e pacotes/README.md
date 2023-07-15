@@ -13,7 +13,7 @@ A maioria das variáveis foram utilizadas no modelo final. Porém, algumas das v
 
 "id" do "cars_test", e "Column1" do "cars_train" foram removidas por serem um valores únicos e exclusivos de cada observação, consegquentemente elas não possuiam poder preditivo para a variável "preco".
 
-"num_fotos" foi removida porque mostrou possuir uma correlação irrelevante com a variável de saída, porque o meu conhecimento do domínio me permite saber que o "número de fotos" de um automóvel não é uma característica usada na sua precificação.
+"num_fotos" foi removida porque mostrou possuir uma correlação irrelevante com a variável de saída e porque o meu conhecimento do domínio me permite saber que o "número de fotos" de um automóvel não é uma característica usada na sua precificação.
 
 Cogitei remover "num_portas", pois pensei que o número de portas não influenciava no valor de um carro. Curiosamente, essa variável mostrou ter uma correlação levemente negativa com o preço. Essa relação provavelmente ocorreu devido aos carros esportivos de luxo que apresentam um alto valor e possuem apenas duas portas. Resolvi manter "num_portas" para que o modelo pudesse capturar as relações estabelecidas pela variável. 
 
