@@ -1,4 +1,4 @@
-por favor acesse as análises estatísticas e EDAs pelos links abaixo. Os códigos/scripts das análises e EDAs podem ser encontrados acessando as pastas/diretórios acima.
+Por favor acessem as análises estatísticas e EDAs pelos links abaixo. Os códigos/scripts das análises e EDAs podem ser encontrados acessando as pastas/diretórios acima.
 
 # Análises Estatísticas
 
