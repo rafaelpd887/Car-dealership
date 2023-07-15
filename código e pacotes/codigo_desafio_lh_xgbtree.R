@@ -19,6 +19,10 @@ cars_test <- cars_test[, -which(names(cars_test) == "id")]
 # Calculando e exibindo a matriz de correlação
 chart.Correlation((cars_train[, c(1, 5:7, 9, 28)]), histogram = TRUE)
 
+# Análise de Variância 
+anova <- aov(preco ~ marca, data = cars_train) # caso desejemos analisar uma variável diferente
+summary(anova)                                 # de "marca", basta substituir "marca" pelo nome
+                                               # da variável a ser analisada.
 # Exibindo estatísticas das variáveis
 summary(cars_train)
 summary(cars_test)
