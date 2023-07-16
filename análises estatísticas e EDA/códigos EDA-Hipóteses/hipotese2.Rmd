@@ -1,5 +1,5 @@
 ---
-title: "Desconsiderando São Paulo, qual o melhor estado para se comprar carros de pessoa fisica que estejam com o ipva pago?"
+title: "Desconsiderando São Paulo, qual o melhor estado para se comprar carros de pessoas física que estejam com o ipva pago?"
 author: "Rafael"
 date: "2023-07-15"
 output: html_document
@@ -51,7 +51,7 @@ media_precos_estado
 
 ### Considerando as análises feitas acima, chegamos a conclusão de que, excluindo o estado de São Paulo, o estado do Rio de Janeiro seria o melhor estado para se comprar um carro com IPVA pago cujo vendendor seja uma pessoa física.
 
-### Nota-se que o estado do Rio de Janeiro é o segundo estado com o maior número de carros com tais características. Percebe-se também que o estado do Rio de Janeiro possui a menor amplitude em seus outliers essas características.
+### Nota-se que o estado do Rio de Janeiro é o segundo estado com o maior número de carros com tais características. Percebe-se também que o estado do Rio de Janeiro possui a menor amplitude em seus outliers.
 
 ### Por fim, podemos ver que o estado do Rio de Janeiro possui a segunda menor média de preço para carros com IPVA pago cujo vendendor seja uma pessoa física.
 
