@@ -28,10 +28,15 @@ Estamos resolvendo um problema de regressão. Classificações são indicadas qu
 
 # Qual modelo melhor se aproxima dos dados e quais seus prós e contras?
 Acredito que os modelos mais indicados seriam a regressão linear e a árvore de decisão. Testei abordagens diferentes para ambos os tipos de modelo e decidi focar apenas nas árvores de decisão devido aos melhores resultados de R².
+
 A avaliação dos modelos foi feita a partir da divisão do "cars_train" em dois datasets na proporção 80/20. O primeiro dataset foi chamado "treino" e o segundo "teste". Essa medida foi necessária pois o "cars_test" não possuia a variável "preco".
-Todos os modelos cogitados foram incialmente, treinados com os dados do "treino" e avaliados com o "teste". Os modelos cogitados foram regressão linear OLS, floresta aleatória, árvore, e xgboost utilizando árvore como modelo base (xgboost tree).
+
+Todos os modelos cogitados foram incialmente, treinados com os dados do "treino" e avaliados com o "teste". Os modelos cogitados foram regressão linear OLS, floresta aleatória, árvore de decisão, e xgboost utilizando árvore como modelo base (xgboost tree).
 Dentre esses, o modelo que obteve melhor desempenho na previsão dos preços para o dataset "teste" foi a árvore com xgboost. 
+
 O XGBoost é um modelo de boosting que trabalha executando repetidamente um modelo base a fim de melhorá-lo com base nos seus resíduos. Ele é um algoritmo versátil e computacionalmente eficiente, sendo adequado para lidar com conjuntos de dados extensos devido à sua natureza iterativa, que permite capturar padrões nos dados que poderiam passar despercebidos em outros modelos. A principal desvantagem do XGBoost é a necessidade de ajustar seus parâmetros, o que pode tornar sua implementação complexa e menos prática em determinadas situações.
+
+O XGBoost Tree foi o modelo que melhor se adequou aos dados provavelmente porque além dos dados serem extensos, com muitas observações e com muitas variáveis, eles também possuiam relações não lineares entre si. Os modelos XGBoost são especialmente indicados para dados extensos, enquanto as árvores de decisão são adequadas para capturar relações não lineares. Logo, o XGBoost Tree deve ter sido capaz de se aproximar bem dos dados por combinar essas características.
 
 # Qual medida de performance do modelo foi escolhida e por quê?
 A medida de desempenho principal escolhida foi o coeficiente de determinação (R²). O R² é uma métrica amplamente utilizada para a avaliação de modelos de regressão. Ele mede o quão bem um modelo se ajusta aos dados e o quão bem ele captura a variação total explicada pelas variáveis independentes.
