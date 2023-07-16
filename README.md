@@ -19,5 +19,8 @@ Com o R e o RStudio instalados, basta abrir e executar "pacotes_desafio_lh.R" e 
 Para que o script "codigo_desafio_lh_xgbtree.R" seja executado corretamente são necessários os datasets "cars_train.xlsx" e "cars_test.xlsx" disponíveis no diretório "datasets". Eles são necessários porque os datasets originalmente disponibilizados não estavam sendo corretamente lidos pelo RStudio no meu computador. Entretanto, nenhuma alteração foi feita nos dados e eles são idênticos aos que foram disponibilizados.
 
 
+
+
 PS: dependendo do computador, a etapa de "Treinamento do Modelo" no script "codigo_desafio_lh_xgbtree.R" pode demorar vários minutos...
+
 PSS: se possível, visitem meu [portifólio](https://rafaelpd.netlify.app).
