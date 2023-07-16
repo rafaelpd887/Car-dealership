@@ -132,11 +132,11 @@ avalia <- function(previsto, observado) {
   cat("R-squared:", r_squared, "\n")}
 
 # Usando a função de avaliação
-p_treino <- predict(xgbtree_final, cars_train)    
-p_teste <- predict(xgbtree, teste)                
-avalia(p_treino, cars_train$preco)                
-
-
+p_treino <- predict(xgbtree_final, cars_train)    # graças a função "avalia" é possível avaliar
+p_teste <- predict(xgbtree_final, teste)          # o MSE, RMSE, MAE e R² dos modelos criados de maneira
+avalia(p_treino, cars_train$preco)                # prática. O xgbtree_final foi o modelo com melhores
+                                                  # métricas no dataset "treino", e por esse motivo ele
+                                                  # foi escolhido como o "modelo definitivo".
 ###############################################################################
 ##                   Prevendo os preços para o "cars_test"                   ##                         
 ###############################################################################
