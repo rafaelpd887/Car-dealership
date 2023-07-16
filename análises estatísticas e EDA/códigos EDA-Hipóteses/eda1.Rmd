@@ -1,0 +1,84 @@
+---
+title: "Qual o melhor estado cadastrado na base de dados para se vender um carro de marca popular e por quê?"
+author: "Rafael"
+date: "2023-07-15"
+output: html_document
+---
+# Carregando pacotes e dataset
+```{r package, message=FALSE, results='hide'}
+pacotes <- c("readxl", "dplyr", "ggplot2" )
+lapply(pacotes, library, character.only = TRUE)
+```
+```{r load}
+cars_train <- read_excel("cars_train.xlsx")
+```
+
+# Análises
+Usando `table` para olhar as marcas disponíveis:
+```{r table}
+table(cars_train$marca)
+```
+
+Vou considerar o termo "popular" como sendo uma referencia às marcas que possuem carros com valores mais acessiveis no brasil.
+
+## Criando um novo dataset apenas com marcas "populares": 
+```{r populares}
+populares <- filter(cars_train, marca %in% c("CHEVROLET", "FIAT", "FORD", "HONDA", "HYUNDAI", "JEEP", "KIA", "NISSAN", "PEUGEOT", "RENAULT", "TOYOTA", "VOLKSWAGEN"))
+```
+
+## Agregando as observações por "estado_vendedor", contando as vendas em cada estado, e mostrando um rank dos estados com os maiores volumes de vendas:
+```{r rank}
+vendas_por_estado <- populares %>%
+  group_by(estado_vendedor) %>%
+  summarise(total_vendas = n()) %>%
+  arrange(desc(total_vendas))
+  top_10_estados <- head(vendas_por_estado, 10)
+  top_10_estados
+```
+
+## Obtendo o maior preço para cada "estado_vendedor"
+```{r vendas2}
+maior_preco_por_estado <- populares %>%
+  group_by(estado_vendedor) %>%
+  summarize(maior_preco = max(preco)) %>%
+arrange(desc(maior_preco))
+maior_preco_por_estado
+```
+
+## Calculando o desvio padrão para cada "estado_vendedor"
+```{r vendas3}
+desvio_padrao_por_estado <- populares %>%
+  group_by(estado_vendedor) %>%
+  summarize(desvio_padrao = sd(preco)) %>%
+arrange(desc(desvio_padrao))
+desvio_padrao_por_estado
+```
+
+## Calculando a média do preço para cada estado:
+```{r media}
+populares_top_estados <- filter(populares, estado_vendedor %in% top_10_estados$estado_vendedor)
+media_preco_por_estado <- populares_top_estados %>%
+  group_by(estado_vendedor) %>%
+  summarize(media_preco = mean(preco))
+  media_preco_por_estado
+```
+
+## Fazendo um boxplot dos preços com os 5 estados com mais vendas
+```{r box}
+siglas_estados <- c("AL", "BA", "GO", "MG", "PR", "PE", "RJ", "RS", "SC", "SP" )
+ggplot(populares_top_estados, aes(x = estado_vendedor, y = preco)) +
+  geom_boxplot() +
+  labs(title = "Boxplot dos Preços dos Carros Populares",
+       x = "Estado Vendedor",
+       y = "Preço") +
+  scale_x_discrete(labels = siglas_estados) +
+  scale_y_continuous(labels = scales::comma)
+```
+
+#### Podemos observar que o estado de São Paulo apresentou um volume de vendas consideravelmente maior em comparação aos demais estados. Além disso, apesar de a média do valor de venda é similar entre os dez estados com maior volume de vendas, o estado de São Paulo possui o maior valor de venda para um carro "popular". O desvio padrão também indica uma variabilidade de preços razoável, demonstrando que o vendedor deve conseguir boas ofertas para vender seu carro no estado de São Paulo.
+
+#### Portanto, com base na análise do dataset, conclui-se que São Paulo é o melhor estado para se vender um carro de marca popular, devido principalmente à grande diferença em relação ao volume de vendas em comparação aos demais estados.
+
+#### Dado que a diferença na média dos preços dos carros populares entre os estados é relativamente pequena, é mais vantajoso vender o carro no estado com maior volume de vendas. Nesse caso, o vendedor teria maior facilidade para concretizar a venda e provavelmente receberia um maior número de ofertas para escolher aquela que mais lhe interessasse.
+
+#### Resalta-se que para essa análise foram usados apenas as marcas "populares" do dataset "cars_train". A saber: "CHEVROLET", "FIAT", "FORD", "HONDA", "HYUNDAI", "JEEP", "KIA", "NISSAN", "PEUGEOT", "RENAULT", "TOYOTA" e "VOLKSWAGEN".

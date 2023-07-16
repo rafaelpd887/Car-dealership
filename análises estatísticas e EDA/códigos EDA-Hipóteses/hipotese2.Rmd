@@ -1,0 +1,58 @@
+---
+title: "Desconsiderando São Paulo, qual o melhor estado para se comprar carros de pessoa fisica que estajam com o ipva pago?"
+author: "Rafael"
+date: "2023-07-15"
+output: html_document
+---
+# Carregando pacotes e dataset
+```{r package, message=FALSE, results='hide'}
+pacotes <- c("readxl", "dplyr", "ggplot2")
+lapply(pacotes, library, character.only = TRUE)
+```
+```{r load}
+cars_train <- read_excel("cars_train.xlsx")
+```
+
+# Análises
+Olhando os estados com os maiores números de carros com IPVAs pagos cujos vendedores sejam pessoa física:
+```{r table}
+ipvas <- cars_train %>%
+  group_by(estado_vendedor) %>%
+  filter(ipva_pago == "IPVA pago" & tipo_vendedor == "PF") %>%
+  summarize(total_carros = n()) %>%
+  arrange(desc(total_carros))
+ipvas
+```
+
+# Filtrando apenas os cinco estados com maior número de carros com IPVA pago
+```{r table2}
+top_5_estados <- head(ipvas, 5)$estado_vendedor
+dados_top_5 <- filter(cars_train, estado_vendedor %in% top_5_estados & ipva_pago == "IPVA pago")
+```
+
+# Criando um boxplot dos preços dos cinco estados com maior número de carros com IPVA pago cujos vendedores sejam pessoa física:
+```{r table3}
+ggplot(dados_top_5, aes(x = estado_vendedor, y = preco)) +
+  geom_boxplot() +
+  labs(title = "Box Plot dos Preços por Estado",
+       x = "Estado",
+       y = "Preço")
+```
+
+## Calculando a média dos preços dos carros com IPVA pago cujos vendedores sejam pessoa física:
+```{r media}
+media_precos_estado <- dados_top_5 %>%
+  group_by(estado_vendedor) %>%
+  summarize(media_preco = mean(preco)) %>%
+  arrange(media_preco)
+media_precos_estado
+```
+
+
+### Considerando as análises feitas acima, chegamos a conclusão de que, excluindo o estado de São Paulo, o estado do Rio de Janeiro seria o melhor estado para se comprar um carro com IPVA pago cujo vendendor seja uma pessoa física.
+
+### Nota-se que o estado do Rio de Janeiro é o segundo estado com o maior número de carros com tais características. Percebe-se também que o estado do Rio de Janeiro possui a menor amplitude em seus outliers essas características.
+
+### Por fim, podemos ver que o estado do Rio de Janeiro possui a segunda menor média de preço para carros com IPVA pago cujo vendendor seja uma pessoa física.
+
+### Assim sendo, podemos afirmar que, desconsiderando o estado de São Paulo, o Rio de Janeiro é o melhor estado para se comprar carros com IPVA pago cujo vendendor seja uma pessoa física.
