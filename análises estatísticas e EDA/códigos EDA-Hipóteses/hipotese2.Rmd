@@ -1,5 +1,5 @@
 ---
-title: "Desconsiderando São Paulo, qual o melhor estado para se comprar carros de pessoa fisica que estajam com o ipva pago?"
+title: "Desconsiderando São Paulo, qual o melhor estado para se comprar carros de pessoa fisica que estejam com o ipva pago?"
 author: "Rafael"
 date: "2023-07-15"
 output: html_document
