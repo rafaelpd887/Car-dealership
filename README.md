@@ -7,7 +7,7 @@ Esse diretório contém arquivos relacionados ao desafio Lighthouse da Indicium.
 
 - Códigos de modelagem podem ser encontrados em "códigos e pacotes" no script "codigo_desafio_lh_xgbtree.R".
 
-- Predicted.csv pode ser encontrado em "datasets".
+- predicted.csv pode ser encontrado em "datasets".
 
 # Como instalar e executar o projeto?
 Meu projeto foi feito usando a linguagem R através do IDE "RStudio". Assim, para executar os códigos disponibilizados nesse repositório, recomendo que o faça em um computador com o R e o RStudio instalados. Ambos estão disponíveis nesse [link](https://posit.co/download/rstudio-desktop/).
