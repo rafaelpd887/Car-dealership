@@ -160,7 +160,7 @@ tabela_previsoes <- data.frame(id = IDs, previsoes = previsoes)
 # Salvando a tabela em formato "csv" (MS Excel)
 diretorio <- getwd()
 caminho <- file.path(diretorio, "predicted.csv")
-write_csv(predicted, caminho)
+write.csv(tabela_previsoes, caminho, row.names = FALSE)
 
 
 ###############################################################################
