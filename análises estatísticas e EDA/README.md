@@ -11,7 +11,7 @@ Por favor acessem as análises estatísticas e EDAs pelos links abaixo. Os códi
 [Qual o melhor estado para se comprar carros que ainda estejam dentro da garantia de fábrica e por quê?](https://rpubs.com/rafaelpd/1062976)
 
 # Hipóteses de negócio
-[Excluindo São Paulo, qual o melhor estado para se vender sedãs de quatro portas automáticos da Chevrolet?](https://rpubs.com/rafaelpd/1062976)
+[Excluindo São Paulo, qual o melhor estado para se vender sedãs de quatro portas automáticos da Chevrolet?](https://rpubs.com/rafaelpd/1063531)
 
 [Desconsiderando São Paulo, qual o melhor estado para se comprar carros de pessoa fisica que estejam com o IPVA pago?](https://rpubs.com/rafaelpd/1063007)
 
