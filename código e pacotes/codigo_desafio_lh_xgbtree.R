@@ -14,32 +14,7 @@ cars_test <- cars_test[, -which(names(cars_test) == "id")]
 
 
 ###############################################################################
-##                        Análise descritiva/exploratória                    ##                         
-###############################################################################
-# Calculando e exibindo a matriz de correlação
-chart.Correlation((cars_train[, c(1, 5:7, 9, 28)]), histogram = TRUE)
-
-# Análise de Variância 
-anova <- aov(preco ~ marca, data = cars_train) # caso desejemos analisar uma variável diferente
-summary(anova)                                 # de "marca", basta substituir "marca" pelo nome
-                                               # da variável a ser analisada.
-# Exibindo estatísticas das variáveis
-summary(cars_train)
-summary(cars_test)
-
-# Exibindo as categorias/níveis das variáveis qualitativas
-levels(factor(cars_train$marca)) # caso desejemos analisar uma variável diferente
-levels(factor(cars_test$marca))  # de "marca", basta substituir "marca" pelo nome
-                                 # da variável a ser analisada.
-
-# Exibindo as frequências de cada categoria/nível das variáveis qualitativas
-table(cars_train$marca)         # caso desejemos analisar uma variável diferente
-table(cars_test$marca)          # de "marca", basta substituir "marca" pelo nome
-                                # da variável a ser analisada.
-
-
-###############################################################################
-##                      Processamento de dados pós-análise                   ##                          
+##                   Processamento de dados pós-análises                     ##                          
 ###############################################################################
 # Removendo as coluna "num_fotos" dos conjuntos de treinamento e teste
 cars_train <- cars_train[, -which(names(cars_train) == "num_fotos")]
