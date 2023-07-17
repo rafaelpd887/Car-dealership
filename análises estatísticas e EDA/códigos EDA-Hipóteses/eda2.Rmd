@@ -65,10 +65,10 @@ preco_medio_por_estado <- picapes_auto %>%
 preco_medio_por_estado
 ```
 
-#### Observa-se que o estado da Paraíba apresentou o menor preço médio para picapes automáticas. Entretanto, é importante ressaltar que o estado da Paraíba possui apenas quatro picapes automáticas no dataset, o que torna a amostra pequena e pode indicar dificuldade em encontrar picapes automáticas para compra.
+Observa-se que o estado da Paraíba apresentou o menor preço médio para picapes automáticas. Entretanto, é importante ressaltar que o estado da Paraíba possui apenas quatro picapes automáticas no dataset, o que torna a amostra pequena e pode indicar dificuldade em encontrar picapes automáticas para compra.
 
-#### Por outro lado, o estado de São Paulo apresenta o maior número de observações de picapes automáticas. Além disso, ele também possui o menor valor absoluto entre todas as picapes automáticas disponíveis, um dos maiores desvios padrão nos preços desses veículos, e apenas o oitavo maior preço médio em um total de 18 estados.
+Por outro lado, o estado de São Paulo apresenta o maior número de observações de picapes automáticas. Além disso, ele também possui o menor valor absoluto entre todas as picapes automáticas disponíveis, um dos maiores desvios padrão nos preços desses veículos, e apenas o oitavo maior preço médio em um total de 18 estados.
 
-#### Portanto, no geral, o estado de São paulo é o melhor estado para se comprar uma picape automática. É onde uma pessoa teria maior facilidade para encontrar uma picape automática para se comprar, e devido a grande variabilidade nos preços indicada pelo desvio-padrão, a pessoa também teria a oportunidade de encontrar preços relativamente mais baixos que em outros estados.
+Portanto, no geral, o estado de São paulo é o melhor estado para se comprar uma picape automática. É onde uma pessoa teria maior facilidade para encontrar uma picape automática para se comprar, e devido a grande variabilidade nos preços indicada pelo desvio-padrão, a pessoa também teria a oportunidade de encontrar preços relativamente mais baixos que em outros estados.
 
-#### É importante ressaltar que essa análise foi realizada apenas com as observações que possuíam a categoria "Picape" na variável qualitativa "tipo" e "Automática" na variável qualitativa "cambio".
+É importante ressaltar que essa análise foi realizada apenas com as observações que possuíam a categoria "Picape" na variável qualitativa "tipo" e "Automática" na variável qualitativa "cambio".
