@@ -159,8 +159,8 @@ tabela_previsoes <- data.frame(id = IDs, previsoes = previsoes)
 
 # Salvando a tabela em formato "xlsx" (MS Excel)
 diretorio <- getwd()
-caminho <- file.path(diretorio, "tabela_previsoes.xlsx")
-write.xlsx(tabela_previsoes, caminho)
+caminho <- file.path(diretorio, "predicted.csv")
+write_csv(predicted, caminho)
 
 
 ###############################################################################
