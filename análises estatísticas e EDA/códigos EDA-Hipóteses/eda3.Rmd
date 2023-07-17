@@ -60,10 +60,10 @@ preco_medio_por_estado <- garantia %>%
 print(preco_medio_por_estado, n = Inf)
 ```
 
-#### Mais uma vez, o estado de São Paulo demonstra, de forma geral, as métricas mais interessantes para o objetivo em questão. Além de possuir o maior volume de observações, São Paulo também apresenta um dos carros com garantia com um dos menores preços.
+Mais uma vez, o estado de São Paulo demonstra, de forma geral, as métricas mais interessantes para o objetivo em questão. Além de possuir o maior volume de observações, São Paulo também apresenta um dos carros com garantia com um dos menores preços.
 
-#### No ranking com a média dos preços dos carros com garantia por estado, São Paulo ocupa a décima terceira posição. No entanto, se considerarmos apenas os cinco estados com a maior quantidade de carros com garantia, São Paulo estaria em primeiro lugar. Já o desvio-padrão indica que São Paulo possui uma variabilidade mediana nos preços em comparação com os outros estados
+No ranking com a média dos preços dos carros com garantia por estado, São Paulo ocupa a décima terceira posição. No entanto, se considerarmos apenas os cinco estados com a maior quantidade de carros com garantia, São Paulo estaria em primeiro lugar. Já o desvio-padrão indica que São Paulo possui uma variabilidade mediana nos preços em comparação com os outros estados
 
-#### Essas métricas indicam que, com base nos dados analisados, São Paulo é o estado mais propício para a compra de carros com garantia de fábrica. É onde encontraríamos o maior número de opções disponíveis, além de possuir um preço médio razoável. Além disso, o grande número de observações e o desvio padrão de amplitude razoável indicam que o comprador teria boas chances de encontrar oportunidades a preços baixos, desde que estivesse disposto a procurá-las.
+Essas métricas indicam que, com base nos dados analisados, São Paulo é o estado mais propício para a compra de carros com garantia de fábrica. É onde encontraríamos o maior número de opções disponíveis, além de possuir um preço médio razoável. Além disso, o grande número de observações e o desvio padrão de amplitude razoável indicam que o comprador teria boas chances de encontrar oportunidades a preços baixos, desde que estivesse disposto a procurá-las.
 
-#### É importante ressaltar que essa análise foi realizada apenas com as observações que possuíam a categoria "Garantia de fábrica" na variável qualitativa "garantia_de_fábrica".
+É importante ressaltar que essa análise foi realizada apenas com as observações que possuíam a categoria "Garantia de fábrica" na variável qualitativa "garantia_de_fábrica".
