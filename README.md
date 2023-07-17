@@ -21,4 +21,6 @@ Para que o script "codigo_desafio_lh_xgbtree.R" seja executado corretamente são
 
 <sub>PS: dependendo do computador, a etapa de "Treinamento do Modelo" no script "codigo_desafio_lh_xgbtree.R" pode demorar vários minutos...</sub>
 
+<sub>PPS: devido a natureza aleatória do modelo xgboost tree, é improvável que as previsões obtidas ao executar o script "codigo_desafio_lh_xgbtree.R" sejam identicas as que estou enviando no arquivo "predicted.csv".</sub>
+
 <sub>PSS: se possível, visitem meu [portfólio](https://rafaelpd.netlify.app).</sub>
