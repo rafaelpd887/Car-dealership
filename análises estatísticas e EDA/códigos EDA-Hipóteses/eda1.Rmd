@@ -75,10 +75,10 @@ ggplot(populares_top_estados, aes(x = estado_vendedor, y = preco)) +
   scale_y_continuous(labels = scales::comma)
 ```
 
-#### Podemos observar que o estado de São Paulo apresentou um número de observações significativamente maior em comparação aos demais estados. Além disso, embora a média do valor de venda seja semelhante entre os dez estados com mais observações, o estado de São Paulo possui o maior valor de venda para um carro de marca popular. O desvio padrão também indica uma variabilidade razoável nos preços, sugerindo que os vendedores podem obter boas ofertas ao venderem seus carros no estado de São Paulo.
+Podemos observar que o estado de São Paulo apresentou um número de observações significativamente maior em comparação aos demais estados. Além disso, embora a média do valor de venda seja semelhante entre os dez estados com mais observações, o estado de São Paulo possui o maior valor de venda para um carro de marca popular. O desvio padrão também indica uma variabilidade razoável nos preços, sugerindo que os vendedores podem obter boas ofertas ao venderem seus carros no estado de São Paulo.
 
-#### Dado que a diferença na média dos preços dos carros populares entre os estados é relativamente pequena, é mais vantajoso vender o carro no estado com maior número de observações. Nesse caso, o vendedor teria maior facilidade para concretizar a venda e provavelmente receberia um maior número de ofertas para escolher aquela que mais lhe interessasse.
+Dado que a diferença na média dos preços dos carros populares entre os estados é relativamente pequena, é mais vantajoso vender o carro no estado com maior número de observações. Nesse caso, o vendedor teria maior facilidade para concretizar a venda e provavelmente receberia um maior número de ofertas para escolher aquela que mais lhe interessasse.
 
-#### Assim sendo, com base na análise do dataset, podemos concluir que São Paulo é o estado mais favorável para vender um carro de marca popular, principalmente devido à grande diferença no número de observações em relação aos demais estados.
+Assim sendo, com base na análise do dataset, podemos concluir que São Paulo é o estado mais favorável para vender um carro de marca popular, principalmente devido à grande diferença no número de observações em relação aos demais estados.
 
-#### Ressalta-se que para essa análise foram usados apenas as marcas "populares" do dataset "cars_train". A saber: "CHEVROLET", "FIAT", "FORD", "HONDA", "HYUNDAI", "JEEP", "KIA", "NISSAN", "PEUGEOT", "RENAULT", "TOYOTA" e "VOLKSWAGEN".
+Ressalta-se que para essa análise foram usados apenas as marcas "populares" do dataset "cars_train". A saber: "CHEVROLET", "FIAT", "FORD", "HONDA", "HYUNDAI", "JEEP", "KIA", "NISSAN", "PEUGEOT", "RENAULT", "TOYOTA" e "VOLKSWAGEN".
