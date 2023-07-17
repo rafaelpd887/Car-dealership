@@ -157,7 +157,7 @@ previsoes <- predict(xgbtree_final, cars_test)
 # Criando tabela com "id" e "previsoes"
 tabela_previsoes <- data.frame(id = IDs, previsoes = previsoes)
 
-# Salvando a tabela em formato "xlsx" (MS Excel)
+# Salvando a tabela em formato "csv" (MS Excel)
 diretorio <- getwd()
 caminho <- file.path(diretorio, "predicted.csv")
 write_csv(predicted, caminho)
