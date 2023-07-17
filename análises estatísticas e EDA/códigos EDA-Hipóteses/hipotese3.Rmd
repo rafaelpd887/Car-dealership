@@ -24,7 +24,7 @@ table(cars_train$marca)
 luxo <- filter(cars_train, marca %in% c("ALFA ROMEO", "AUDI", "BMW", "CHRYSLER", "FERRARI", "JAGUAR", "LAND ROVER", "LEXUS", "MASERATI", "MERCEDES-BENZ", "PORSCHE"))
 ```
 
-## Estados com maiores volumes de vendas para carros de "luxo":
+## Estados com maiores volumes de observações para carros de "luxo":
 ```{r rank}
 vendas_por_estado <- luxo %>%
   group_by(estado_vendedor) %>%
@@ -44,7 +44,7 @@ media_preco_por_estado <- luxo_top_estados %>%
   media_preco_por_estado
 ```
 
-## Contar o número de vendas por marca e estado no dataset "luxo"
+## Contando o número de observações por marca e estado no dataset "luxo"
 ```{r rank2}
 vendas_por_marca_estado <- luxo %>%
   group_by(estado_vendedor, marca) %>%
@@ -58,10 +58,10 @@ marca_mais_vendida_por_estado <- vendas_por_marca_estado %>%
 marca_mais_vendida_por_estado
 ```
 
-### Analisando o dataset "cars_train", observamos que o estado do Paraná possui o segundo maior volume de vendas e o segundo maior preço médio para carros de luxo. Sabendo que o estado de São Paulo não está sendo considerado, podemos concluir que, com base nesses dados, o estado do Paraná seria uma escolha favorável para abrir a concessionária.
+Analisando o dataset “cars_train”, observamos que o estado do Paraná possui o segundo maior volume de observações e o segundo maior preço médio para carros de luxo. Sabendo que o estado de São Paulo não está sendo considerado, podemos concluir que, com base nesses dados, o estado do Paraná seria uma escolha favorável para abrir a concessionária.
 
-### A marca BMW se destaca como a mais vendida no estado do Paraná, demosntrando que uma concessionária de luxo aberta nesse estado deveria focar na venda de carros da marca BMW.
+A marca BMW se destaca como a mais vendida no estado do Paraná, demonstrando que uma concessionária de luxo aberta nesse estado deveria focar na venda de carros da marca BMW.
 
-### É importante ressaltar que não foi avaliado especificamente o preço médio dos carros da marca BMW, mas sim o preço médio dos carros de luxo em geral. No entanto, como o Paraná apresenta a maior média de preço, podemos inferir que a população desse estado tem uma boa aceitação para pagar valores mais elevados por carros de luxo. Além disso, a preferência dos paranaenses pela marca BMW fornece mais um indicativo para a escolha dessa marca na concessionária.
+É importante ressaltar que não foi avaliado especificamente o preço médio dos carros da marca BMW, mas sim o preço médio dos carros de luxo em geral. Assim, como o Paraná apresenta a maior média de preço para carros de luxo, podemos inferir que a população desse estado tem uma boa aceitação para pagar valores mais elevados por carros de luxo. Além disso, a preferência dos paranaenses pela marca BMW fornece mais um indicativo para a escolha dessa marca na concessionária.
 
-### Esses indicativos combinados oferecem uma base sólida para a tomada de decisão na abertura da concessionária de luxo no estado do Paraná focada na marca BMW.
+Esses indicativos combinados oferecem uma base sólida para a tomada de decisão da abertura de uma concessionária de luxo no estado do Paraná focada na marca BMW.
