@@ -15,4 +15,4 @@ Por favor acessem as análises estatísticas e EDAs pelos links abaixo. Os códi
 
 [Desconsiderando São Paulo, qual o melhor estado para se comprar carros de pessoa fisica que estejam com o IPVA pago?](https://rpubs.com/rafaelpd/1063007)
 
-[Considerando uma concessionária de luxo que vende apenas uma marca, qual seria a marca e o estado, excluindo São Paulo, mais adequados para abrir essa concessionária de luxo?](https://rpubs.com/rafaelpd/1062993)
+[Considerando uma concessionária de luxo que vende apenas uma marca, qual seria a marca e o estado, excluindo São Paulo, mais adequados para abrir essa concessionária de luxo?](https://rpubs.com/rafaelpd/1063539)
