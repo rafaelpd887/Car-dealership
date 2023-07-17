@@ -50,11 +50,11 @@ ggplot(carros_top_10, aes(x = estado_vendedor, y = preco)) +
   scale_y_continuous(labels = scales::comma, breaks = c(250000, 500000, 750000, 1000000))
 ```
 
-### Considerando as análises realizadas, observamos que os estados de São Paulo, Rio de Janeiro e Paraná apresentam os maiores volumes de observações para sedãs de quatro portas automáticos da Chevrolet. No entanto, como parte do objetivo é desconsiderar o estado de São Paulo, os estados do Rio de Janeiro e do Paraná se mostram as melhores opções para a venda desses sedãs.
+Considerando as análises realizadas, observamos que os estados de São Paulo, Rio de Janeiro e Paraná apresentam os maiores volumes de observações para sedãs de quatro portas automáticos da Chevrolet. No entanto, como parte do objetivo é desconsiderar o estado de São Paulo, os estados do Rio de Janeiro e do Paraná se mostram as melhores opções para a venda desses sedãs.
 
-### Ao comparar o Rio de Janeiro e Paraná, verificamos que a média de preços dos carros com essas características é superior no Paraná. Isso indica que o lucro provavelmente seria maior nesse estado. Embora o estado de Goiás apresente uma média de preços mais alta, seu volume de observações é menos da metade do volume do Paraná. Por esse motivo, o Paraná ainda se mostra como a melhor escolha para a venda de sedãs de quatro portas automáticos da Chevrolet.
+Ao comparar o Rio de Janeiro e Paraná, verificamos que a média de preços dos carros com essas características é superior no Paraná. Isso indica que o lucro provavelmente seria maior nesse estado. Embora o estado de Goiás apresente uma média de preços mais alta, seu volume de observações é menos da metade do volume do Paraná. Por esse motivo, o Paraná ainda se mostra como a melhor escolha para a venda de sedãs de quatro portas automáticos da Chevrolet.
 
-### Adicionalmente, o box plot confirma uma média de preços ligeiramente superior, juntamente com uma boa amplitude de preços acima da média. 
+Adicionalmente, o box plot confirma uma média de preços ligeiramente superior, juntamente com uma boa amplitude de preços acima da média. 
 
-### Com base nessas análises, concluímos que o estado do Paraná, excluindo o estado de São Paulo, é a melhor opção para a venda de sedãs de quatro portas automáticos da Chevrolet.
+Com base nessas análises, concluímos que o estado do Paraná, excluindo o estado de São Paulo, é a melhor opção para a venda de sedãs de quatro portas automáticos da Chevrolet.
 
