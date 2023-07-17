@@ -1,7 +1,3 @@
-pacotes <- c("readxl", "kableExtra", "utils", "plotly", "dplyr", "rstatix", "jtools", "equatiomatic", 
-             "cowplot", "olsrr", "nortest", "car", "PerformanceAnalytics", "fastDummies", "ggplot2")
-lapply(pacotes, library, character.only = TRUE)
-
 pacotes <- c("readxl", # permite "ler" arquivos "xlsx"
              "dplyr", # funções para análise estatística 
              "PerformanceAnalytics", # adiciona outras funções para análise, 
@@ -12,7 +8,8 @@ pacotes <- c("readxl", # permite "ler" arquivos "xlsx"
              "nortest", # sf_test
              "openxlsx", # permite salvar em formato "xlsx"
              "rpart", # árvores
-             "caret"  # xgbtree entre outras funções
+             "caret" , # xgbtree entre outras funções
+             "readr"  # permite salvar arquivos "csv"
              )
 if(sum(as.numeric(!pacotes %in% installed.packages())) != 0){
   instalador <- pacotes[!pacotes %in% installed.packages()]
