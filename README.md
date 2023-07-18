@@ -16,7 +16,7 @@ Com o R e o RStudio instalados, basta abrir e executar "pacotes_desafio_lh.R" e 
 
 "pacotes_desafio_lh.R" e "codigo_desafio_lh_xgbtree.R" estão disponíveis no diretório/pasta "código e pacotes".
 
-Para que o script "codigo_desafio_lh_xgbtree.R" seja executado corretamente são necessários os datasets "cars_train.xlsx" e "cars_test.xlsx" disponíveis no diretório "datasets". Eles são necessários porque os datasets disponibilizados em formato "csv" não estavam sendo corretamente lidos pelo RStudio no meu computador. Entretanto, nenhuma alteração foi feita nos dados e eles são idênticos aos que foram disponibilizados.
+Para que o script "codigo_desafio_lh_xgbtree.R" seja executado corretamente são necessários os datasets "cars_train.xlsx" e "cars_test.xlsx" disponíveis no diretório "datasets". Eles são necessários porque os datasets disponibilizados em formato "csv" não estavam sendo lidos corretamente pelo RStudio no meu computador. Entretanto, nenhuma alteração foi feita nos dados e eles são idênticos aos que foram disponibilizados.
 
 
 <sub>PS: dependendo do computador, a etapa de "Treinamento do Modelo" no script "codigo_desafio_lh_xgbtree.R" pode demorar vários minutos...</sub>
