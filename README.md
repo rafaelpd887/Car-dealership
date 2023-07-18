@@ -1,4 +1,4 @@
-# Desafio_Lighthouse
+# Desafio_Lighthouse - Cientista de Dados
 Esse diretório contém arquivos relacionados ao desafio Lighthouse da Indicium.
 
 - Arquivos de requisitos com todos pacotes utilizados pode ser encontrado em "códigos e pacotes" no script "pacotes_desafio_lh.R".
