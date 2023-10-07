@@ -1,10 +1,10 @@
 ---
-title: "Qual o melhor estado cadastrado na base de dados para se vender um carro de marca popular e por quê?"
+title: "Which is the best state in the database to sell a popular brand car and why?"
 author: "Rafael"
 date: "2023-07-15"
 output: html_document
 ---
-# Carregando pacotes e dataset
+# Loading packages and dataset
 ```{r package, message=FALSE, results='hide'}
 pacotes <- c("readxl", "dplyr", "ggplot2" )
 lapply(pacotes, library, character.only = TRUE)
@@ -13,20 +13,20 @@ lapply(pacotes, library, character.only = TRUE)
 cars_train <- read_excel("cars_train.xlsx")
 ```
 
-# Análises
-Usando `table` para olhar as marcas disponíveis:
+# Analyses
+Using `table` to look at the available brands:
 ```{r table}
 table(cars_train$marca)
 ```
 
-Vou considerar o termo "popular" como sendo uma referencia às marcas que possuem carros com valores mais acessiveis no brasil.
+I'll consider the term "popular" as a reference to brands that have more affordable cars in Brazil.
 
-## Criando um novo dataset apenas com marcas "populares": 
+## Creating a new dataset with only "popular" brands 
 ```{r populares}
 populares <- filter(cars_train, marca %in% c("CHEVROLET", "FIAT", "FORD", "HONDA", "HYUNDAI", "JEEP", "KIA", "NISSAN", "PEUGEOT", "RENAULT", "TOYOTA", "VOLKSWAGEN"))
 ```
 
-## Agregando as observações por "estado_vendedor", e mostrando um rank dos estados com as maiores quantidades de observações:
+## Aggregating observations by "estado_vendedor" and showing a ranking of states with the highest number of observations
 ```{r rank}
 vendas_por_estado <- populares %>%
   group_by(estado_vendedor) %>%
@@ -36,7 +36,7 @@ vendas_por_estado <- populares %>%
   top_10_estados
 ```
 
-## Obtendo o maior preço para cada "estado_vendedor"
+## Getting the highest price for each "estado_vendedor"
 ```{r vendas2}
 maior_preco_por_estado <- populares %>%
   group_by(estado_vendedor) %>%
@@ -45,7 +45,7 @@ arrange(desc(maior_preco))
 maior_preco_por_estado
 ```
 
-## Calculando o desvio padrão para cada "estado_vendedor"
+## Calculating the standard deviation for each "estado_vendedor"
 ```{r vendas3}
 desvio_padrao_por_estado <- populares %>%
   group_by(estado_vendedor) %>%
@@ -54,7 +54,7 @@ arrange(desc(desvio_padrao))
 desvio_padrao_por_estado
 ```
 
-## Calculando a média do preço para cada estado:
+## Calculating the average price for each state
 ```{r media}
 populares_top_estados <- filter(populares, estado_vendedor %in% top_10_estados$estado_vendedor)
 media_preco_por_estado <- populares_top_estados %>%
@@ -63,7 +63,7 @@ media_preco_por_estado <- populares_top_estados %>%
   media_preco_por_estado
 ```
 
-## Fazendo um boxplot dos preços com os 5 estados com mais vendas
+## Creating a boxplot of prices for the top 5 states with the most sales
 ```{r box}
 siglas_estados <- c("AL", "BA", "GO", "MG", "PR", "PE", "RJ", "RS", "SC", "SP" )
 ggplot(populares_top_estados, aes(x = estado_vendedor, y = preco)) +
@@ -75,10 +75,10 @@ ggplot(populares_top_estados, aes(x = estado_vendedor, y = preco)) +
   scale_y_continuous(labels = scales::comma)
 ```
 
-Podemos observar que o estado de São Paulo apresentou um número de observações significativamente maior em comparação aos demais estados. Além disso, embora a média do valor de venda seja semelhante entre os dez estados com mais observações, o estado de São Paulo possui o maior valor de venda para um carro de marca popular. O desvio padrão também indica uma variabilidade razoável nos preços, sugerindo que os vendedores podem obter boas ofertas ao venderem seus carros no estado de São Paulo.
+We can observe that the state of São Paulo had a significantly higher number of observations compared to other states. Furthermore, although the average selling price is similar among the top ten states with the most observations, São Paulo has the highest selling price for a popular brand car. The standard deviation also indicates reasonable price variability, suggesting that sellers can get good deals when selling their cars in the state of São Paulo.
 
-Dado que a diferença na média dos preços dos carros populares entre os estados é relativamente pequena, é mais vantajoso vender o carro no estado com maior número de observações. Nesse caso, o vendedor teria maior facilidade para concretizar a venda e provavelmente receberia um maior número de ofertas para escolher aquela que mais lhe interessasse.
+Given that the difference in average prices for popular cars between states is relatively small, it is more advantageous to sell the car in the state with the highest number of observations. In this case, the seller would have an easier time closing the sale and would likely receive more offers to choose from, which may be more attractive.
 
-Assim sendo, com base na análise do dataset, podemos concluir que São Paulo é o estado mais favorável para vender um carro de marca popular, principalmente devido à grande diferença no número de observações em relação aos demais estados.
+Therefore, based on the analysis of the dataset, we can conclude that São Paulo is the most favorable state to sell a popular brand car, mainly due to the significant difference in the number of observations compared to other states.
 
-Ressalta-se que para essa análise foram usados apenas as marcas "populares" do dataset "cars_train". A saber: "CHEVROLET", "FIAT", "FORD", "HONDA", "HYUNDAI", "JEEP", "KIA", "NISSAN", "PEUGEOT", "RENAULT", "TOYOTA" e "VOLKSWAGEN".
+It's worth noting that this analysis considered only the "popular" brands in the "cars_train" dataset, which are: "CHEVROLET," "FIAT," "FORD," "HONDA," "HYUNDAI," "JEEP," "KIA," "NISSAN," "PEUGEOT," "RENAULT," "TOYOTA," and "VOLKSWAGEN."

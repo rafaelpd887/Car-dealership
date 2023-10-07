@@ -1,10 +1,10 @@
 ---
-title: "Qual o melhor estado para se comprar carros que ainda estejam dentro da garantia de fábrica e por quê?"
+title: "What is the best state to buy cars that are still under factory warranty and why?"
 author: "Rafael"
 date: "2023-07-15"
 output: html_document
 ---
-# Carregando pacotes e dataset
+# Loading packages and dataset
 ```{r package, message=FALSE, results='hide'}
 pacotes <- c("readxl", "dplyr")
 lapply(pacotes, library, character.only = TRUE)
@@ -13,18 +13,18 @@ lapply(pacotes, library, character.only = TRUE)
 cars_train <- read_excel("cars_train.xlsx")
 ```
 
-# Análises
-Usando `table` para olhar as frequências da variável "garantia_de_fábrica":
+# Analyses
+Using table to look at the frequencies of the variable “garantia_de_fábrica”( factory warranty)
 ```{r table}
 table(cars_train$garantia_de_fábrica)
 ```
 .
-## Criando um novo dataset apenas com os carros que ainda possuem garantia de fábrica: 
+## Creating a new dataset only with cars that still have factory warranty
 ```{r garantia}
 garantia <- filter(cars_train, garantia_de_fábrica %in% c("Garantia de fábrica"))
 ```
 
-## Calculando o volume de observações em cada "estado_vendedor"
+## Looking at the volume of observations for each “estado_vendedor”(selling state)
 ```{r vendas}
 vendas_por_estado <- garantia %>%
   group_by(estado_vendedor) %>%
@@ -33,7 +33,7 @@ vendas_por_estado <- garantia %>%
 print(vendas_por_estado, n = Inf)
 ```
 
-## Obtendo o menor preço para cada "estado_vendedor"
+## Getting the lowest price for each “estado_vendedor”
 ```{r vendas2}
 menor_preco_por_estado <- garantia %>%
   group_by(estado_vendedor) %>%
@@ -42,7 +42,7 @@ arrange(menor_preco)
 print(menor_preco_por_estado, n = Inf)
 ```
 
-## Calculando o desvio padrão para cada "estado_vendedor"
+## Calculating the standard deviation for each “estado_vendedor”
 ```{r vendas3}
 desvio_padrao_por_estado <- garantia %>%
   group_by(estado_vendedor) %>%
@@ -51,7 +51,7 @@ arrange(desc(desvio_padrao))
 print(desvio_padrao_por_estado, n = Inf)
 ```
 
-## Calculando o preço médio de venda para cada "estado_vendedor"
+## Calculating the average selling price for each “estado_vendedor”
 ```{r preço}
 preco_medio_por_estado <- garantia %>%
   group_by(estado_vendedor) %>%
@@ -60,10 +60,10 @@ preco_medio_por_estado <- garantia %>%
 print(preco_medio_por_estado, n = Inf)
 ```
 
-Mais uma vez, o estado de São Paulo demonstra, de forma geral, as métricas mais interessantes para o objetivo em questão. Além de possuir o maior volume de observações, São Paulo também apresenta um dos carros com garantia com um dos menores preços.
+Once again, the state of São Paulo demonstrates, in general, the most interesting metrics for the goal at hand. Besides having the largest volume of observations, São Paulo also presents one of the cars with a warranty at one of the lowest prices.
 
-No ranking com a média dos preços dos carros com garantia por estado, São Paulo ocupa a décima terceira posição. No entanto, se considerarmos apenas os cinco estados com a maior quantidade de carros com garantia, São Paulo estaria em primeiro lugar. Já o desvio-padrão indica que São Paulo possui uma variabilidade mediana nos preços em comparação com os outros estados
+In the ranking of the average prices of cars with a warranty by state, São Paulo occupies the thirteenth position. However, if we consider only the five states with the highest number of cars with a warranty, São Paulo would be in first place. As for the standard deviation, it indicates that São Paulo has a moderate variability in prices compared to other states.
 
-Essas métricas indicam que, com base nos dados analisados, São Paulo é o estado mais propício para a compra de carros com garantia de fábrica. É onde encontraríamos o maior número de opções disponíveis, além de possuir um preço médio razoável. Além disso, o grande número de observações e o desvio padrão de amplitude razoável indicam que o comprador teria boas chances de encontrar oportunidades a preços baixos, desde que estivesse disposto a procurá-las.
+These metrics indicate that, based on the analyzed data, São Paulo is the most suitable state for purchasing factory warranty cars. It's where you would find the largest number of available options, as well as having a reasonable average price. Additionally, the high number of observations and a reasonably wide standard deviation suggest that the buyer would have good chances of finding opportunities at lower prices, provided they were willing to search for them.
 
-É importante ressaltar que essa análise foi realizada apenas com as observações que possuíam a categoria "Garantia de fábrica" na variável qualitativa "garantia_de_fábrica".
+It's important to note that this analysis was conducted only with observations that had the category "Garantia de Fábrica" in the qualitative variable "garantia_de_fábrica."
