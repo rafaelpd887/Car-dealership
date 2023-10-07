@@ -1,10 +1,10 @@
 ---
-title: "Considerando uma concessionária de luxo que vende apenas uma marca, qual seria a marca e o estado, excluindo São Paulo, mais adequados para abrir essa concessionária de luxo?"
+title: "Considering a luxury dealership that sells only one brand, which would be the brand and the state, excluding São Paulo, most suitable to open this luxury dealership?"
 author: "Rafael"
 date: "2023-07-15"
 output: html_document
 ---
-# Carregando pacotes e dataset
+# Loading packages and dataset
 ```{r package, message=FALSE, results='hide'}
 pacotes <- c("readxl", "dplyr")
 lapply(pacotes, library, character.only = TRUE)
@@ -13,18 +13,18 @@ lapply(pacotes, library, character.only = TRUE)
 cars_train <- read_excel("cars_train.xlsx")
 ```
 
-# Análises
+# Analyses
 Usando `table` para olhar as marcas disponíveis:
 ```{r table}
 table(cars_train$marca)
 ```
 
-## Criando um novo dataset apenas com marcas de "luxo": 
+## Creating a new dataset only with luxury brands: 
 ```{r populares}
 luxo <- filter(cars_train, marca %in% c("ALFA ROMEO", "AUDI", "BMW", "CHRYSLER", "FERRARI", "JAGUAR", "LAND ROVER", "LEXUS", "MASERATI", "MERCEDES-BENZ", "PORSCHE"))
 ```
 
-## Estados com maiores volumes de observações para carros de "luxo":
+## States with the highest volumes of observations for luxury cars
 ```{r rank}
 vendas_por_estado <- luxo %>%
   group_by(estado_vendedor) %>%
@@ -34,7 +34,7 @@ vendas_por_estado <- luxo %>%
   top_10_estados
 ```
 
-## Calculando a média do preço dos carros de "luxo" para cada estado:
+## Calculating the average price of “luxury” cars for each state
 ```{r media}
 luxo_top_estados <- filter(luxo, estado_vendedor %in% top_10_estados$estado_vendedor)
 media_preco_por_estado <- luxo_top_estados %>%
@@ -44,7 +44,7 @@ media_preco_por_estado <- luxo_top_estados %>%
   media_preco_por_estado
 ```
 
-## Contando o número de observações por marca e estado no dataset "luxo"
+## Counting the number of observations by brand and state in the “luxo” dataset
 ```{r rank2}
 vendas_por_marca_estado <- luxo %>%
   group_by(estado_vendedor, marca) %>%
@@ -58,10 +58,10 @@ marca_mais_vendida_por_estado <- vendas_por_marca_estado %>%
 marca_mais_vendida_por_estado
 ```
 
-Analisando o dataset “cars_train”, observamos que o estado do Paraná possui o segundo maior volume de observações e o segundo maior preço médio para carros de luxo. Sabendo que o estado de São Paulo não está sendo considerado, podemos concluir que, com base nesses dados, o estado do Paraná seria uma escolha favorável para abrir a concessionária.
+Analyzing the “cars_train” dataset, we observe that the state of Paraná has the second highest volume of observations and the second highest average price for luxury cars. Knowing that the state of São Paulo is not being considered, we can conclude that, based on this data, the state of Paraná would be a favorable choice to open the dealership.
 
-A marca BMW se destaca como a mais vendida no estado do Paraná, demonstrando que uma concessionária de luxo aberta nesse estado deveria focar na venda de carros da marca BMW.
+The BMW brand stands out as the most sold in the state of Paraná, demonstrating that a luxury dealership opened in this state should focus on selling BMW brand cars.
 
-É importante ressaltar que não foi avaliado especificamente o preço médio dos carros da marca BMW, mas sim o preço médio dos carros de luxo em geral. Assim, como o Paraná apresenta a maior média de preço para carros de luxo, podemos inferir que a população desse estado tem uma boa aceitação para pagar valores mais elevados por carros de luxo. Além disso, a preferência dos paranaenses pela marca BMW fornece mais um indicativo para a escolha dessa marca na concessionária.
+It is important to note that we did not specifically evaluate the average price of BMW brand cars, but rather the average price of luxury cars in general. Thus, as Paraná has the highest average price for luxury cars, we can infer that the population of this state has a good acceptance to pay higher values for luxury cars. In addition, the preference of Paraná residents for the BMW brand provides another indication for choosing this brand at the dealership.
 
-Esses indicativos combinados oferecem uma base sólida para a tomada de decisão da abertura de uma concessionária de luxo no estado do Paraná focada na marca BMW.
+These combined indicators provide a solid basis for making the decision to open a luxury dealership in the state of Paraná focused on the BMW brand.

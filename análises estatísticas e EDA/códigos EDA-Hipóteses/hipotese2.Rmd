@@ -1,10 +1,10 @@
 ---
-title: "Desconsiderando São Paulo, qual o melhor estado para se comprar carros de pessoas física que estejam com o ipva pago?"
+title: "Excluding São Paulo, which is the best state to buy cars from individuals that have paid IPVA?"
 author: "Rafael"
 date: "2023-07-15"
 output: html_document
 ---
-# Carregando pacotes e dataset
+# Loading packages and dataset
 ```{r package, message=FALSE, results='hide'}
 pacotes <- c("readxl", "dplyr", "ggplot2")
 lapply(pacotes, library, character.only = TRUE)
@@ -13,8 +13,9 @@ lapply(pacotes, library, character.only = TRUE)
 cars_train <- read_excel("cars_train.xlsx")
 ```
 
-# Análises
-Olhando os estados com os maiores números de carros com IPVAs pagos cujos vendedores sejam pessoa física:
+# Analyses
+
+# Looking at the states with the highest numbers of cars with paid IPVA whose sellers are individuals
 ```{r table}
 ipvas <- cars_train %>%
   group_by(estado_vendedor) %>%
@@ -24,22 +25,22 @@ ipvas <- cars_train %>%
 ipvas
 ```
 
-# Filtrando apenas os cinco estados com os maiores números de carros com IPVA pago
+# Filtering only the five states with the highest numbers of cars with paid IPVA
 ```{r table2}
 top_5_estados <- head(ipvas, 5)$estado_vendedor
 dados_top_5 <- filter(cars_train, estado_vendedor %in% top_5_estados & ipva_pago == "IPVA pago")
 ```
 
-# Criando um boxplot dos preços dos cinco estados com os maiores números de carros com IPVA pago cujos vendedores sejam pessoa física:
+# Creating a boxplot of the prices of the five states with the highest numbers of cars with paid IPVA whose sellers are individuals
 ```{r table3}
 ggplot(dados_top_5, aes(x = estado_vendedor, y = preco)) +
   geom_boxplot() +
-  labs(title = "Box Plot dos Preços por Estado",
-       x = "Estado",
-       y = "Preço")
+  labs(title = "Box Plot of prices per state",
+       x = "State",
+       y = "Price")
 ```
 
-## Calculando a média dos preços dos carros com IPVA pago cujos vendedores sejam pessoa física:
+## Calculating the average price of cars with paid IPVA whose sellers are individuals in the five states with the most observations
 ```{r media}
 media_precos_estado <- dados_top_5 %>%
   group_by(estado_vendedor) %>%
@@ -48,11 +49,10 @@ media_precos_estado <- dados_top_5 %>%
 media_precos_estado
 ```
 
+Considering the analyses made above, we conclude that, excluding the state of São Paulo, the state of Rio de Janeiro would be the best state to buy a car with paid IPVA whose seller is an individual.
 
-Considerando as análises feitas acima, chegamos a conclusão de que, excluindo o estado de São Paulo, o estado do Rio de Janeiro seria o melhor estado para se comprar um carro com IPVA pago cujo vendendor seja uma pessoa física.
+It is noted that the state of Rio de Janeiro is the second state with the highest number of cars with such characteristics. It is also noticed that the state of Rio de Janeiro has the smallest range in its outliers.
 
-Nota-se que o estado do Rio de Janeiro é o segundo estado com o maior número de carros com tais características. Percebe-se também que o estado do Rio de Janeiro possui a menor amplitude em seus outliers.
+Finally, we can see that the state of Rio de Janeiro has the second lowest average price for cars with paid IPVA whose seller is an individual.
 
-Por fim, podemos ver que o estado do Rio de Janeiro possui a segunda menor média de preço para carros com IPVA pago cujo vendendor seja uma pessoa física.
-
-Assim sendo, podemos afirmar que, desconsiderando o estado de São Paulo, o Rio de Janeiro é o melhor estado para se comprar carros com IPVA pago cujo vendendor seja uma pessoa física.
+Therefore, we can affirm that in general, and disregarding the state of São Paulo, Rio de Janeiro is the best state to buy cars with paid IPVA whose seller is an individual.
