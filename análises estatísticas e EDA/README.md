@@ -1,7 +1,7 @@
-Por favor acessem as análises estatísticas e EDAs pelos links abaixo. Os códigos/scripts das análises e EDAs podem ser vistos acessando as pastas/diretórios acima.
+Please access the statistical analyses and exploratory data analyses (EDAs) through the following links. You can view the code/scripts for the analyses and EDAs by accessing the folders/directories above.
 
-# Análises Estatísticas
-[Relatório Análises Estatísticas](https://rpubs.com/rafaelpd/1063197)
+# Statistical Analysis
+[Statistical Analysis Report](https://rpubs.com/rafaelpd/1094837)
 
 # EDAs propostos
 [Qual o melhor estado cadastrado na base de dados para se vender um carro de marca popular e por quê?](https://rpubs.com/rafaelpd/1062934)
