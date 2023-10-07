@@ -19,8 +19,8 @@ With R and RStudio installed, just open and run “packages_project_lh.R” and 
 For the script “code_project_lh_xgbtree.R” to be executed correctly, the datasets “cars_train.xlsx” and “cars_test.xlsx” available in the directory “datasets” are necessary. They are necessary because the datasets provided in “csv” format were not being read correctly by RStudio on my computer. However, no changes were made to the data and they are identical to those that were provided."
 
 
-<sub>PS: Depending on the computer, the “Model Training” step in the “codigo_desafio_lh_xgbtree.R” script may take several minutes…</sub>
+<sub>PS: Depending on the computer, the “Model Training” step in the “code_project_lh_xgbtree.R” script may take several minutes…</sub>
 
-<sub>PPS: Due to the random nature of the xgboost tree model, it is unlikely that the predictions obtained by running the “codigo_desafio_lh_xgbtree.R” script will be identical to those I am sending in the “predicted.csv” file.</sub>
+<sub>PPS: Due to the random nature of the xgboost tree model, it is unlikely that the predictions obtained by running the “code_project_lh_xgbtree.R” script will be identical to those I am sending in the “predicted.csv” file.</sub>
 
 <sub>PSS: If possible, please visit my [portfolio](https://rafaelpd.netlify.app).</sub>
