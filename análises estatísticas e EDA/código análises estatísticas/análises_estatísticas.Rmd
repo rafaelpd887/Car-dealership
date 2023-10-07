@@ -1,10 +1,10 @@
 ---
-title: "Análises Estatísticas"
+title: "Statistical Analysis"
 author: "Rafael"
 date: "2023-07-16"
 output: html_document
 ---
-# Carregando pacotes e datasets, e eliminando as colunas referentes ao "id"
+# Loading packages and datasets, and removing columns related to "id"
 ```{r package, message=FALSE, results='hide'}
 pacotes <- c("readxl", "PerformanceAnalytics")
 lapply(pacotes, library, character.only = TRUE)
@@ -20,76 +20,76 @@ cars_train <- cars_train[-1]
 cars_test <- cars_test[-1]
 ```
 
-# Calculando e exibindo a matriz de correlação
+# Calculating and displaying the correlation matrix
 ```{r correlation, warning=FALSE}
 chart.Correlation((cars_train[, c(1, 5:7, 9, 28)]), histogram = TRUE)
 ```
 
-A matriz de correlação nos permite compreender a relação que as variáveis numéricas mantém entre si. Podemos ver que "num_fotos" e "num_portas" possuem baixa correlação com todas as outras e que pouco influenciam no preço dos automóveis. 
+The correlation matrix allows us to understand the relationship that numeric variables maintain with each other. We can see that "num_fotos" and "num_portas" have low correlation with all the others and have little influence on the price of the cars.
 
-Curiosamente, "num_portas" apresenta uma leve correlação negativa com o preço, o que pode parecer contra-intuitivo devido ao senso comum de que carros com mais portas tendem a serem mais caros por serem maiores e etc. Entretanto, os dados apresentam essse comportamento devido a presença de observações que representam carros esportivos de luxo de duas portas que possuem um valor muito elevado. 
+Interestingly, "num_portas" shows a slight negative correlation with price, which may seem counterintuitive due to the common perception that cars with more doors tend to be more expensive because they are larger, etc. However, the data exhibit this behavior due to the presence of observations representing luxury sports cars with two doors that have a very high value.
 
-As outras variáveis numéricas seguem um comportamento esperado. "ano_de_fabricacao" apresenta forte correlação positiva com "ano_modelo", e ambas apresentam correlação positiva com preço. Indicando que quanto mais novo o carro, maior tende a ser o seu preço.
+The other numeric variables follow an expected pattern. "ano_de_fabricacao" has a strong positive correlation with "ano_modelo", and both have a positive correlation with price, indicating that the newer the car, the higher its price tends to be.
 
-A variável "hodometro" também segue um comportamento esperado, apresentando correlação negativa com "ano_de_fabricacao", "ano_modelo" e "preco". Podemos inferir que carros mais antigos tendem a ter uma quilometragem registrada no hodômetro maior. Consequentemente, quanto maior a quilometragem registrada no hodômetro, menor é o preço do automóvel.
+The "hodometro" variable also follows an expected pattern, showing a negative correlation with "ano_de_fabricacao", "ano_modelo", and "preco". We can infer that older cars tend to have a higher odometer(hodometro in portuguese) reading. Consequently, the higher the odometer reading, the lower the price of the automobile.
 
-Essa breve análise nos mostra que as variáveis numéricas, no geral, possuem relações confiáveis e coerentes com a realidade.
+This brief analysis shows us that the numeric variables, in general, have reliable and coherent relationships with reality.
 
-# Análise de Variância 
+# Analysis of Variance 
+
 ```{r anova}
-cars_train <- replace(cars_train, is.na(cars_train), "nao")
 anova <- aov(preco ~ marca, data = cars_train) 
 summary(anova)                                      
 ```
 
-<span style="font-size: smaller;"> _Caso desejemos analisar uma variável diferente de "marca", basta substituir "marca" pelo nome da variável desejada. Antes de usar a função `aov` foi necessário um pequeno tratamento nos dados para eliminar os valores vazios (NA)._
+<span style="font-size: smaller;"> _If we wish to analyze a different variable than "marca", simply replace "marca" with the desired variable's name._
 
-As análises de variância (ANOVA) são úteis para avaliar o grau de significância de uma variável em relação a outra, permitindo uma compreensão clara das relações entre as variáveis. Quando usadas em conjunto com análises de correlação, obtemos um panorama abrangente das relações entre as variáveis.
+Analysis of variance (ANOVA) is useful for assessing the significance of one variable in relation to another, allowing for a clear understanding of the relationships between variables. When used in conjunction with correlation analyses, we obtain a comprehensive overview of the relationships between variables.
 
-Usando a função `aov`, foi possível analisar todas as variáveis independentes em função da variável dependente "preco".
+Using the "aov" function, it was possible to analyze all independent variables in relation to the dependent variable "price".
 
-Os resultados indicaram que praticamente todas as variáveis se mostraram significantes para a formação do preço a um nível de confiança de 95%. As únicas variáveis que não se mostraram significantes a 95% de confiança foram "elegivel_revisao", "ipva_pago" e "veiculo_alienado".
+The results indicated that virtually all variables were significant for price formation at a 95% confidence level. The only variables that were not significant at a 95% confidence level were "elegivel_revisao", "ipva_pago", and "veiculo_alienado".
 
-# Exibindo estatísticas das variáveis
+# Displaying statistics of the variables
 ```{r summary}
 summary(cars_train)
 summary(cars_test)
 ```
 
-Através da função `summary`, podemos visualizar informações estatísticas sobre as variáveis nos conjuntos de dados "cars_train" e "cars_test". Ela fornece o tipo de cada variável, além da amplitude e de informações estatísticas, como a média, mediana e quartis para as variáveis numéricas.
+Through the `summary` function, we can view statistical information about the variables in the 'cars_train' and 'cars_test' datasets. It provides the type of each variable, as well as the range and statistical information such as mean, median, and quartiles for the numeric variables.
 
-Após analisar o conjunto de dados usando a função `summary`, podemos observar algumas informações relevantes. Por exemplo, a média dos preços dos carros é de 133.024. Além disso, notamos que o conjunto de dados possui observações que representam carros muito recentes, com ano do modelo igual a 2023, assim como observações relacionadas a carros mais antigos, com o ano de fabricação em 1985. 
+After analyzing the dataset using the 'summary' function, we can observe some relevant information. For example, the mean price of cars is $133,024. Additionally, we notice that the dataset contains observations representing very recent cars with a model year of 2023, as well as observations related to older cars with a manufacturing year as early as 1985.
 
-Observamos também uma variação considerável na quilometragem registrada nos hodômetros dos carros no conjunto de dados. Alguns carros possuem uma quilometragem muito baixa, sugerindo um uso limitado, enquanto outros apresentam uma quilometragem bastante elevada, indicando um uso mais extensivo.
+We also observe considerable variation in the odometer readings of the cars in the dataset. Some cars have very low mileage, suggesting limited use, while others have quite high mileage, indicating more extensive use.
 
-Assim, o uso da `summary` nos permite ter uma visão geral das características e distribuição das variáveis. Essas informações estatísticas são úteis para entender melhor os dados e identificar possíveis discrepâncias, outliers ou padrões nos valores das variáveis.
+Thus, using `summary` allows us to get an overview of the characteristics and distribution of the variables. These statistical insights are helpful for better understanding the data and identifying potential discrepancies, outliers, or patterns in the variable values.
 
-# Exibindo as categorias/níveis das variáveis qualitativas
+# Displaying the categories/levels of qualitative variables
 ```{r levels}
 levels(factor(cars_train$marca)) 
 levels(factor(cars_test$marca))  
 ```
 
-<span style="font-size: smaller;"> _Caso desejemos analisar uma variável diferente de "marca", basta substituir "marca" pelo nome da variável desejada._
+<span style="font-size: smaller;"> _If we wish to analyze a variable other than 'marca', simply replace 'marca' with the desired variable's name._
 
-A função `levels` nos permite identificar a quantidade de categorias/níveis presentes nas variáveis qualitativas/categóricas. Essa função é útil, pois em conjunto com outras análises, nos proporciona uma boa compreensão da complexidade dos dados com os quais estamos lidando.
+The "levels" function allows us to identify the number of categories/levels present in qualitative/categorical variables. This function is useful because, when combined with other analyses, it provides us with a good understanding of the complexity of the data we are dealing with.
 
-Nesse caso em especial, observamos que algumas das variáveis qualitativas possuem uma grande quantidade de categorias, com destaque para a variável "versao".
+In this particular case, we observe that some of the qualitative variables have a large number of categories, with particular emphasis on the "versao" (version) variable.
 
-Isso indica que o treinamento de um modelo preditivo será desafiador, uma vez que essas variáveis aumentam a complexidade do modelo e devem ser incluídas no treinamento, pois sabemos, tanto por meio das análises realizadas aqui como por nossa experiência no mundo real, que variáveis como modelo, versão e marca do carro têm influência direta no preço.
+This indicates that training a predictive model will be challenging, as these variables increase the complexity of the model and should be included in the training process. We know, both from the analyses conducted here and our real-world experience, that variables such as model, version, and car brand have a direct influence on the price.
 
-Percebe-se também que as categorias das variáveis qualitativas não são exatamente as mesmas nos dois datasets. Por exemplo, a categoria "BRM" da variável "marca" é exclusiva do dataset "cars_train". Logo, será necessário um tratamento especial nos dados para que seja possível fazer previsões de preço no dataset "cars_test" usando um modelo treinado a partir do datase "cars_train".
+It's also worth noting that the categories of the qualitative variables are not exactly the same in both datasets. For example, the "BRM" category in the "marca" (brand) variable is exclusive to the "cars_train" dataset. Therefore, special data treatment will be necessary to make price predictions in the "cars_test" dataset using a model trained on the "cars_train" dataset.
 
-# Exibindo as frequências de cada categoria/nível das variáveis qualitativas
+# Displaying the frequencies of each category/level of the qualitative variables
 ```{r table}
 table(cars_train$marca)         
 table(cars_test$marca)          
 ```
 
-<span style="font-size: smaller;"> _Caso desejemos analisar uma variável diferente de "marca", basta substituir "marca" pelo nome da variável desejada._
+<span style="font-size: smaller;"> _If we want to analyze a different variable than "marca" (brand), simply replace "marca" with the name of the desired variable._
 
-A função `table` também é muito útil para obter informações sobre as variáveis qualitativas. Ela nos permite verificar a contagem de observações em cada uma das categorias de uma variável qualitativa..
+The `table` function is also very useful for obtaining information about qualitative variables. It allows us to check the count of observations in each of the categories of a qualitative variable.
 
-Ao analisarmos os dados, observamos que variáveis com um maior número de categorias apresentam algumas categorias com um número muito pequeno de observações. Especificamente, a variável "versao" possui várias categorias com poucas observações.
+When analyzing the data, we noticed that variables with a larger number of categories have some categories with a very small number of observations. Specifically, the "versao" (version) variable has several categories with few observations.
 
-Conforme mencionado anteriormente, essa característica em um conjunto de dados pode tornar as previsões mais desafiadoras, especialmente quando não podemos simplesmente excluir as variáveis que possuem essas características.
+As mentioned earlier, this characteristic in a dataset can make predictions more challenging, especially when we cannot simply exclude the variables that exhibit these characteristics.
