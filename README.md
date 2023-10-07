@@ -23,4 +23,4 @@ For the script “codigo_desafio_lh_xgbtree.R” to be executed correctly, the d
 
 <sub>PPS: Due to the random nature of the xgboost tree model, it is unlikely that the predictions obtained by running the “codigo_desafio_lh_xgbtree.R” script will be identical to those I am sending in the “predicted.csv” file.</sub>
 
-<sub>PSS: If possible, please visit my [portfólio](https://rafaelpd.netlify.app).</sub>
+<sub>PSS: If possible, please visit my [portfolio](https://rafaelpd.netlify.app).</sub>
