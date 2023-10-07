@@ -1,38 +1,38 @@
 ###############################################################################
-##                          Pré-processamento de dados                       ##                         
+##                          Data Preprocessing                               ##                         
 ###############################################################################
-# Carregando os conjuntos de dados
+# Loading the datasets
 cars_train <- read_excel("cars_train.xlsx")
 cars_test <- read_excel("cars_test.xlsx")
 
-# Salvando os IDs
+# Saving the IDs
 IDs <- cars_test$id
 
-# Removendo coluna referente ao id dos conjuntos de treinamento e teste
+# Removing the id column from the training and test sets
 cars_train <- cars_train[, -which(names(cars_train) == "Column1")]
 cars_test <- cars_test[, -which(names(cars_test) == "id")]
 
 
 ###############################################################################
-##                   Processamento de dados pós-análises                     ##                          
+##                   Post-analysis Data Processing                           ##                          
 ###############################################################################
-# Removendo as coluna "num_fotos" dos conjuntos de treinamento e teste
+# Removing the "num_fotos" column from the training and test sets
 cars_train <- cars_train[, -which(names(cars_train) == "num_fotos")]
 cars_test <- cars_test[, -which(names(cars_test) == "num_fotos")]
 
-# Removendo as colunas "veiculo_alienado" e "elegivel_revisao" dos conjuntos de treinamento e teste
+# Removing the columns "veiculo_alienado" and "elegivel_revisao" from the training and test sets
 cars_train <- cars_train[, !(names(cars_train) %in% c("veiculo_alienado", "elegivel_revisao"))]
 cars_test <- cars_test[, !(names(cars_test) %in% c("veiculo_alienado", "elegivel_revisao"))]
 
-# Substindo os valores ausentes por "nao" nos conjuntos de treinamento e teste
+# Replacing missing values with "nao" in the training and test sets
 cars_train[is.na(cars_train)] <- "nao"
 cars_test[is.na(cars_test)] <- "nao"
 
-# Criando objetos contendo as variáveis quantitativas e qualitativas
+# Creating objects containing quantitative and qualitative variables
 variaveis_quantitativas <- c("ano_de_fabricacao", "ano_modelo", "hodometro", "num_portas", "preco")
 variaveis_qualitativas <- setdiff(names(cars_train), variaveis_quantitativas)
 
-# Aplicando dummização nos conjuntos de "cars_train" e "cars_test" (One-Hot Coding)
+# Applying dummy coding to the "cars_train" and "cars_test" sets (One-Hot Coding)
 cars_train <- dummy_columns(.data = cars_train,
                             select_columns = variaveis_qualitativas,
                             remove_selected_columns = TRUE,
@@ -45,44 +45,44 @@ cars_test <- dummy_columns(.data = cars_test,
                            remove_most_frequent_dummy = TRUE) %>%
   rename_with(.cols = contains(variaveis_qualitativas), .fn = ~ paste0("dummy_", .))
 
-# Corrigindo o nome da variável "ano_modelo" que foi modificado durante a dummização
+# Correcting the name of the variable "ano_modelo" that was modified during dummy coding
 cars_train <- rename(cars_train, ano_modelo = dummy_ano_modelo)
 cars_test <- rename(cars_test, ano_modelo = dummy_ano_modelo)
 
-# Dividino "cars_train" em "treino" e "teste"
+# Dividing "cars_train" into "train" and "test"
 n <- sample(1:2,                                
-            size = nrow(cars_train),            # "treino" e "teste" foram
-            replace = TRUE,                     # usados para testar diferentes tipos de modelos
-            prob=c(0.8, 0.2))                   # e escolher um "modelo definitivo" para ser 
-                                                # treinado com os dados do "cars_train". O "modelo
-treino <- cars_train[n==1,]                     # definitivo" pôde então ser usado para prever os
-teste <- cars_train[n==2,]                      # preços das observações do "cars_test"
+            size = nrow(cars_train),            # "train" and "test" were
+            replace = TRUE,                     # used to test different types of models
+            prob=c(0.8, 0.2))                   # and choose a "definitive model" to be 
+                                                # trained with the data from "cars_train". The 
+treino <- cars_train[n==1,]                     # definitive model could then be used to predict 
+teste <- cars_train[n==2,]                      # the prices of the observations from "cars_test"
 
 
 ###############################################################################
-##                            Treinamento do Modelo                          ##                    
+##                            Model Training                                 ##                    
 ###############################################################################
-# Definindo o parâmetro "control"
+# Defining the "control" parameter
 control <- caret::trainControl(
-  "cv",                              # método de validação cruzada
-  number = 2,                        # número de repetições da validação cruzada
-  summaryFunction = defaultSummary,  # função de resumo padrão para avaliação
-  classProbs = FALSE                 # não calcular probabilidades das classes
+  "cv",                              # cross-validation method
+  number = 2,                        # number of cross-validation repetitions
+  summaryFunction = defaultSummary,  # default summary function for evaluation
+  classProbs = FALSE                 # do not calculate class probabilities
 )
 
-# Definindo o parâmetro "search_grid"
+# Defining the "search_grid" parameter
 search_grid <- expand.grid(
-  nrounds = 50,                      # número de iterações
-  max_depth = 30,                    # profundidade máxima das árvores
+  nrounds = 50,                      # number of iterations
+  max_depth = 30,                    # maximum depth of trees
   gamma = 0,                         
-  eta = c(0.05, 0.4),                # taxa de aprendizado
-  colsample_bytree = .7,             # fração de colunas amostradas por árvore
-  min_child_weight = 1,              # peso mínimo dos nós 
-  subsample = .7                     # fração de obs. a serem usadas em cada árvore
+  eta = c(0.05, 0.4),                # learning rate
+  colsample_bytree = .7,             # fraction of columns sampled per tree
+  min_child_weight = 1,              # minimum weight of nodes 
+  subsample = .7                     # fraction of obs. to be used in each tree
 )
-# Criando o modelo ("XGBoost Tree")
+# Creating the model ("XGBoost Tree")
 xgbtree_final <- caret::train(
-  preco ~ .,                         # preço em função de "tudo"
+  preco ~ .,                         # price as a function of "everything"
   data = cars_train,
   method = "xgbTree",
   trControl = control,
@@ -92,9 +92,9 @@ xgbtree_final <- caret::train(
 
 
 ###############################################################################
-##                            Avaliação do Modelo                            ##                    
+##                            Model Evaluation                               ##                    
 ###############################################################################
-# Criando uma função de avaliação
+# Creating an evaluation function
 avalia <- function(previsto, observado) {
   mse <- mean((previsto - observado)^2)
   rmse <- sqrt(mse)
@@ -106,38 +106,37 @@ avalia <- function(previsto, observado) {
   cat("MAE:", mae, "\n")
   cat("R-squared:", r_squared, "\n")}
 
-# Usando a função de avaliação
-p_treino <- predict(xgbtree_final, cars_train)    # graças a função "avalia" é possível avaliar
-p_teste <- predict(xgbtree_final, teste)          # o MSE, RMSE, MAE e R² dos modelos criados de maneira
-avalia(p_treino, cars_train$preco)                # prática. O xgbtree_final foi o modelo com melhores
-                                                  # métricas no dataset "treino", e por esse motivo ele
-                                                  # foi escolhido como o "modelo definitivo".
+# Using the evaluation function
+p_treino <- predict(xgbtree_final, cars_train)    # thanks to the "avalia" function it is possible to evaluate the MSE, RMSE, MAE and R² of the created models in a practical way.
+p_teste <- predict(xgbtree_final, teste)          # The xgbtree_final was the model with the best metrics in the "train" dataset, and for this reason it was chosen as the "definitive model".
+avalia(p_treino, cars_train$preco)                # practical way. The xgbtree_final was the model with better metrics in the dataset "train", and for this reason it was chosen as the "definitive model".
+                                                  # metrics in the dataset "train", and for this reason it was chosen as the "definitive model".
 ###############################################################################
-##                   Prevendo os preços para o "cars_test"                   ##                         
+##                   Predicting prices for "cars_test"                       ##                         
 ###############################################################################
-# Identificando as variáveis dummizadas presentes no conjunto de treinamento
+# Identifying dummy variables present in the training set
 dummies <- grep("dummy_", colnames(cars_train), value = TRUE)
 
-# Verificando quais variáveis dummizadas não estão presentes no conjunto de teste
+# Checking which dummy variables are not present in the test set
 dummies_faltantes <- setdiff(dummies, colnames(cars_test))
 
-# Adicionando as variáveis ausentes ao conjunto de teste com valor 0
+# Adding missing variables to test set with value 0
 for (variable in dummies_faltantes) {
   cars_test[[variable]] <- 0
 }
 
-# Fazendo previsões nos dados de teste
+# Making predictions on test data
 previsoes <- predict(xgbtree_final, cars_test)
-
-# Criando tabela com "id" e "previsoes"
+# Creating a table with "id" and "previsoes"
 tabela_previsoes <- data.frame(id = IDs, previsoes = previsoes)
 
-# Salvando a tabela em formato "csv" (MS Excel)
+# Saving the table in "csv" format (MS Excel)
 diretorio <- getwd()
 caminho <- file.path(diretorio, "predicted.csv")
 write.csv(tabela_previsoes, caminho, row.names = FALSE)
 
 
 ###############################################################################
-##                               FIM !!!!!!                                  ##
+##                               THE END !!!!!!                              ##
 ###############################################################################
+
