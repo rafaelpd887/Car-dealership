@@ -1,5 +1,5 @@
 # Data Scientist Challenge
-This README.md aims to answer the questions asked in item 3 of the “Tasks” section of the file “[Lighthouse] Data Scientist Challenge 2023-9".
+This README.md aims to answer the some questions about the project.
 
 # Explain how you would predict the price from the data.
 For the results of a data science project to be as good as possible, it is interesting to have an action plan to follow. A well-known action plan that can be used in data science is CRISP-DM (Cross Industry Standard Process for Data Mining).
