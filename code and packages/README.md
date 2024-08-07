@@ -1,14 +1,14 @@
-# Data Scientist Challenge
-This README.md aims to answer the some questions about the project.
+# About
+This README.md provides an overview of the insights and details about this project.
 
-# Explain how you would predict the price from the data.
+# Methodology
 For the results of a data science project to be as good as possible, it is interesting to have an action plan to follow. A well-known action plan that can be used in data science is CRISP-DM (Cross Industry Standard Process for Data Mining).
 
 CRISP-DM consists of 6 main steps: Business Understanding, Data Understanding, Data Preparation, Modeling, Evaluation, and Deployment.
 
 The steps listed above summarize the approach adopted by me to try to predict the price of cars from the data provided.
 
-# What variables and/or transformations did you use and why? 
+# What variables and/or transformations where used? 
 Most of the variables were used in the final model. However, some of the variables were useless for the objective and were removed from the data.
 
 “id” from “cars_test”, and “Column1” from “cars_train” were removed because they are unique and exclusive values of each observation, consequently they do not have predictive power for the variable “preco”.
@@ -21,8 +21,8 @@ The datasets provided had many other NA values in other variables, but unlike �
 
 Finally, all qualitative variables were “dummy coded” in order to allow better performance in certain models.
 
-# What type of problem are we solving (regression, classification)? 
-We are solving a regression problem. Classifications are indicated when the dependent variable is qualitative.
+# What Type of Problem is Being Addressed (Regression, Classification)? 
+Regression.
 
 # Which model best approximates the data and what are its pros and cons? 
 The evaluation of the models was done by dividing “cars_train” into two datasets in a 80/20 proportion. The first dataset was called “train” and the second one “test”. This measure was necessary because “cars_test” did not have the variable “preco”.
