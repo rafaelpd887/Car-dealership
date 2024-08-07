@@ -1,4 +1,4 @@
-# Data Scientist Challenge 
+# Car dealer project
 This directory contains files related to the Data Scientist challenge.
 
 - Requirement files with all used packages can be found in “codes and packages” in the script “packages_project_lh.R”.
